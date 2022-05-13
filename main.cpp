@@ -1,9 +1,8 @@
 #include <set>
 #include <iostream>
 #include <map>
-// These are just for eaiser input
-#include <tuple> 
-#include <vector>
+#include <tuple> // These are just for eaiser inputs 
+#include <vector> //
 
 class Firm {
     int liveOrders;
@@ -98,7 +97,6 @@ class MatchingEngine
     }
     
 public:
-	
     void onNewOrder(uint16_t firmId, std::string symbol, char side, float price) {
         // If the attempted order already exists, return
         if (orderQueue.count(Order(firmId, symbol))) return;
