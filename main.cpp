@@ -3,7 +3,7 @@
 #include <set>
 #include <iostream>
 #include <map>
-#include <tuple> // These are just for eaiser inputs 
+#include <tuple> // These are just used to make input data easier
 #include <vector> //
 
 class Firm {
@@ -32,10 +32,16 @@ public:
         this->liveOrders--;
     }
 
+    float getBalance() {
+        return totalBalance;
+    }
+    
     std::string toString() {
-        return std::to_string(liveOrders) + " " + std::to_string(filledOrders) + " " + std::to_string(totalBalance);
+        return std::to_string(liveOrders) + " " + std::to_string(filledOrders);
     }
 };
+
+
 
 class Order {
     uint16_t ID;
@@ -141,7 +147,7 @@ public:
         for (std::set<Order>::iterator it = orderQueue.begin(); it != orderQueue.end(); it++) {
             Order curOrder = *it;
             if (curOrder.getWho() == firmId && curOrder.getSymbol() == symbol) {
-                // If we found one, erase it and put in modified order
+                // If we found one, erase it and post modified order
                 char side = curOrder.getSide();
                 orderQueue.erase(it);
                 getFirm(firmId).cancelOrder();
@@ -166,7 +172,7 @@ public:
     void print() {
         for (auto const& curFirm : FirmList) {
             Firm firm = curFirm.second;
-            std::cout << curFirm.first << " " << firm.toString() << "\n";
+            std::cout << curFirm.first << " " << firm.toString() << " " << firm.getBalance() << "\n";
         }
     }
 };
@@ -200,7 +206,6 @@ int main() {
         Tuple('N', 2023, "CME", 'B', 500.51),
     };
     
-
     for (Tuple msg : msgStream) {
         switch (std::get<0>(msg)) {
             case 'N':
