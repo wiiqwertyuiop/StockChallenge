@@ -42,8 +42,6 @@ public:
     }
 };
 
-
-
 class Order {
     uint16_t ID;
     std::string symbol;
@@ -177,7 +175,6 @@ public:
         }
     }
 };
-
 
 int main() {
     
