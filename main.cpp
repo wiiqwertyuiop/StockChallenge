@@ -2,6 +2,7 @@
 
 #include <set>
 #include <iostream>
+#include <string>
 #include <map>
 #include <tuple> // These are just used to make input data easier
 #include <vector> //
